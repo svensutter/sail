@@ -1,8 +1,11 @@
-# windrichtung und geschwindigkeit
+# Dieses Modul beinhaltet alle Funktionen zur Windanalyse. Dazu gehört die Bestimmung der subjektiven Windrichtung,
+# wie auch die Verbindung zur Hardware.
 import math
 
 
-# funktion gibt wahrer Windwinkel zurueck
+# Mit dieser Funktion kann die tatsaechliche Windrichtung (unabhaengig von Fahrtwind) berechnet werden.
+## !! Diese Funktion werden wir voraussichtlich gar nicht benoetigen, da wir whs. nur mit der subj. Windrichtung
+##    arbeiten werden. Kann also evtl. spaeter geloescht werden.
 def RealWindAngle(ApparentWind, BoatSpeed, ApparentAngle):
  RealWindSpeed = math.sqrt(ApparentWind**2 + BoatSpeed**2 - 2*ApparentWind*BoatSpeed*math.cos(ApparentAngle))
  
