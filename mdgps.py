@@ -29,11 +29,3 @@ def TargetAngleToNorth(Boat_Latitude, Boat_Longitude, Target_Latitude, Target_Lo
         Angle = 360 - Angle
 
     return(Angle)
-
-
-
-# TEST
-print(TargetAngleToNorth(50.237482364, 7.234872934, 53.23984729384, 8.234234324)) # Nord-Ost
-print(TargetAngleToNorth(20, 30, 10, 50)) # Ost-Sued
-print(TargetAngleToNorth(20, 40, 10, 15)) # Sued-West
-print(TargetAngleToNorth(25, 20, 32, 10)) # West-Nord
