@@ -25,8 +25,10 @@ def GetGooglePosition(url):
         
     print(cordinates[0])
     print(cordinates[1])
-        
        
+        
+GetGooglePosition()        
+        
     
 # Diese Funktion berechnet aus den Koordinaten vom Boot und Ziel den Winkel im
 # im Verhaeltnis zu Norden. Dabei erwartet die Funktion die Koordinaten in
