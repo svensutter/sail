@@ -25,10 +25,6 @@ def GetGooglePosition(url):
         coordinates[i] = (((float(split2[i][1]) / 60) + float(split2[i][0])) / 60) + float(split1[i][0])
     
     return coordinates # gibt Liste zurueck, 0: Longitude (dec), 1: Latitude (dec)
-       
-        
-TargetPosition = GetGooglePosition("https://goo.gl/maps/LHnc9P1YEvN2")
-print(TargetPosition)
         
     
 # Diese Funktion berechnet aus den Koordinaten vom Boot und Ziel den Winkel im
