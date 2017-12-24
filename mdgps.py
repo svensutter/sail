@@ -8,8 +8,6 @@ import re
 # Funktion GetGooglePosition. Ausgehend von URL, die in Mail steckt, wenn man eine
 # Position teilt, werden die Koordinaten dieses Punktes zurueckgegeben.
 def GetGooglePosition(url):
-    url = "https://goo.gl/maps/LHnc9P1YEvN2" # nachher loeschen
-
     content = urllib.request.urlopen(url)
 
     html = content.read()
@@ -21,13 +19,13 @@ def GetGooglePosition(url):
         split1[i] = re.split(r"[\°]", hits[i])
         split2[i] = re.split(r"[\']", hits[i])
         
-        coordinates[i] = ((split2[i][1] / 60) + split2[i][0]) / 60) + split1[i][0]
+        coordinates[i] = (((split2[i][1] / 60) + split2[i][0]) / 60) + split1[i][0]
         
     print(cordinates[0])
     print(cordinates[1])
        
         
-GetGooglePosition()        
+GetGooglePosition("https://goo.gl/maps/LHnc9P1YEvN2")
         
     
 # Diese Funktion berechnet aus den Koordinaten vom Boot und Ziel den Winkel im
