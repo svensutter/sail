@@ -16,7 +16,7 @@ def GetGooglePosition(url):
     hits = re.findall(r"\-{0,1}\d{1,2}[\°]\d\d[\']\d\d[\.]\d", html)
     coordinates = [0,0]
 
-    for i in range(0, 1):
+    for i in range(0, 2):
         split1 = [0,0]
         split2 = [0,0]
         split1[i] = re.split(r"[\°]", hits[i])
