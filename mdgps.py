@@ -20,7 +20,7 @@ def GetGooglePosition(url):
         split1 = [0,0]
         split2 = [0,0]
         split1[i] = re.split(r"[\°]", hits[i])
-        split2[i] = re.split(r"[\']", hits[i])
+        split2[i] = re.split(r"[\']", split1[i][1])
         
         coordinates[i] = (((float(split2[i][1]) / 60) + float(split2[i][0])) / 60) + float(split1[i][0])
         
