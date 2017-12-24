@@ -1,7 +1,33 @@
 # Hier finden alle Funktionen zu GPS Platz. Dazu gehoeren Positionsbestimmung, Kompass, Winkel zum Ziel.
 
 import math
+import urllib.request
+import re
 
+
+# Funktion GetGooglePosition. Ausgehend von URL, die in Mail steckt, wenn man eine
+# Position teilt, werden die Koordinaten dieses Punktes zurueckgegeben.
+def GetGooglePosition(url):
+    url = "https://goo.gl/maps/LHnc9P1YEvN2" # nachher loeschen
+
+    content = urllib.request.urlopen(url)
+
+    html = content.read()
+    html = html.decode()
+
+    hits = re.findall(r"\-{0,1}\d{1,2}[\°]\d\d[\']\d\d[\.]\d", html)
+
+    for i in range(0, 1):
+        split1[i] = re.split(r"[\°]", hits[i])
+        split2[i] = re.split(r"[\']", hits[i])
+        
+        coordinates[i] = ((split2[i][1] / 60) + split2[i][0]) / 60) + split1[i][0]
+        
+    print(cordinates[0])
+    print(cordinates[1])
+        
+       
+    
 # Diese Funktion berechnet aus den Koordinaten vom Boot und Ziel den Winkel im
 # im Verhaeltnis zu Norden. Dabei erwartet die Funktion die Koordinaten in
 # Dezimalform. Output ist der Winkel in Bezug zu Norden im Uhrzeigersinn,
