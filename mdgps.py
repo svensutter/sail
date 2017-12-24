@@ -24,8 +24,8 @@ def GetGooglePosition(url):
         
         coordinates[i] = (((float(split2[i][1]) / 60) + float(split2[i][0])) / 60) + float(split1[i][0])
         
-    print(cordinates[0])
-    print(cordinates[1])
+    print(coordinates[0])
+    print(coordinates[1])
        
         
 GetGooglePosition("https://goo.gl/maps/LHnc9P1YEvN2")
