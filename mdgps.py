@@ -23,12 +23,12 @@ def GetGooglePosition(url):
         split2[i] = re.split(r"[\']", split1[i][1])
         
         coordinates[i] = (((float(split2[i][1]) / 60) + float(split2[i][0])) / 60) + float(split1[i][0])
-        
-    print(coordinates[0])
-    print(coordinates[1])
+    
+    return coordinates # gibt Liste zurueck, 0: Longitude (dec), 1: Latitude (dec)
        
         
-GetGooglePosition("https://goo.gl/maps/LHnc9P1YEvN2")
+TargetPosition = GetGooglePosition("https://goo.gl/maps/LHnc9P1YEvN2")
+print(TargetPosition)
         
     
 # Diese Funktion berechnet aus den Koordinaten vom Boot und Ziel den Winkel im
