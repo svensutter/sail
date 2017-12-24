@@ -14,12 +14,15 @@ def GetGooglePosition(url):
     html = html.decode()
 
     hits = re.findall(r"\-{0,1}\d{1,2}[\°]\d\d[\']\d\d[\.]\d", html)
+    coordinates = [0,0]
 
     for i in range(0, 1):
+        split1 = [0,0]
+        split2 = [0,0]
         split1[i] = re.split(r"[\°]", hits[i])
         split2[i] = re.split(r"[\']", hits[i])
         
-        coordinates[i] = (((split2[i][1] / 60) + split2[i][0]) / 60) + split1[i][0]
+        coordinates[i] = (((float(split2[i][1]) / 60) + float(split2[i][0])) / 60) + float(split1[i][0])
         
     print(cordinates[0])
     print(cordinates[1])
