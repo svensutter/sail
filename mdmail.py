@@ -13,7 +13,7 @@ import imaplib
 # Funktion GetURLFromMail, ruft neuste E-Mail ab, extrahiert Shortlink
 # und gibt diesen zurueck
 def GetURLFromMail():
- im = imaplib.IMAP4(Mail_Imap) # Verbindung aufbauen
+ im = imaplib.IMAP4_SSL(Mail_Imap, Mail_ImapPort) # Verbindung aufbauen
  im.login(Mail_User, Mail_Paswd) ### LOGIN
  
  print(im.list())
