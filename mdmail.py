@@ -28,13 +28,14 @@ def GetTargetFromMail():
   mailid_max = id
   
  mail_content = im.fetch(mailid_max, "(BODY[TEXT])")
- if re.search(r"base64", mail_content) == "base64": # falls E-Mail base64-codiert ist
+ if re.search(r"base64", str(mail_content)) == "base64": # falls E-Mail base64-codiert ist
   mail_content = base64.decode(mail_content)
+  print("base64") # debug
  print(mail_content)
  
- # for id in mailids[1][0].split(): # Alle Mails mit den besagten IDs loeschen
- #   im.store(id, '+FLAGS', '\\Deleted')
- # im.expunge()
+ for id in mailids[1][0].split(): # Alle Mails mit den besagten IDs loeschen
+  im.store(id, '+FLAGS', '\\Deleted')
+ im.expunge()
 
  im.logout() ### LOGOUT
  
