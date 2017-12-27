@@ -34,17 +34,17 @@ def GetTargetFromMail():
  mail_content = im.fetch(mailid_max, "(BODY[TEXT])")
  if re.search(r"base64", str(mail_content)) == "base64": # falls E-Mail base64-codiert ist
   mail_content = base64.decode(mail_content)
-  print("base64") # debug
- print(mail_content)
+  print("base64")
  
  for id in mailids[1][0].split(): # Alle Mails mit den besagten IDs loeschen
-  im.store(id, '+FLAGS', '\\Deleted')
+   im.store(id, '+FLAGS', '\\Deleted')
  im.expunge()
 
  im.logout() ### LOGOUT
  
- # Was noch fehlt:
- # 1) Link aus mail_content auslesen
- # 2) Linkuebergabe an GetGooglePosition(url), die Positionsdaten ermittelt, mit return
- 
-print(GetTargetFromMail()) # test
+ shortlink = re.search('https://goo.gl.*"', str(mail_content))
+ shortlink = re.sub('"', '', str(shortlink))
+
+ coordinates = [0][0]
+ coordinates = mdgps.GetGooglePosition(shortlink)
+ return coordinates
