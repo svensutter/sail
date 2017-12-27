@@ -5,7 +5,7 @@ import mdmail
 import mdgps
 
 # TEST TEST TEST
-target = mdmail.GetTargetFromMail())
+target = mdmail.GetTargetFromMail()
 if target == None:
   print("Keine Position per E-Mail erhalten")
 else:
