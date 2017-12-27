@@ -24,8 +24,12 @@ def GetTargetFromMail():
  im.select("INBOX")
  mailids = im.search(None, '(SUBJECT "Gesetzte Markierung")') # IDs liegen an zweiter Listenstelle, wiederum als Liste
  
+ mailid_max = None
  for id in mailids[1][0].split(): # Maximale ID herausfinden
   mailid_max = id
+  
+ if mailid_max == None:
+  return None
   
  mail_content = im.fetch(mailid_max, "(BODY[TEXT])")
  if re.search(r"base64", str(mail_content)) == "base64": # falls E-Mail base64-codiert ist
