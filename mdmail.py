@@ -43,8 +43,8 @@ def GetTargetFromMail():
 
  im.logout() ### LOGOUT
  
- shortlink = re.search('https://goo.gl.*"', str(mail_content))
- shortlink = re.sub('"', '', str(shortlink))
+ shortlink_match = re.search('https://goo.gl.*"', str(mail_content)) # Shortlink auslesen
+ shortlink = re.sub('"', '', shortlink_match.group(0)) # kuerzen des Stringteils des Matchobjekts
 
  coordinates = [0][0]
  coordinates = mdgps.GetGooglePosition(shortlink)
