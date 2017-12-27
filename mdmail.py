@@ -11,6 +11,7 @@ Mail_Smtp = "smtp.gmail.com"
 import imaplib
 import re
 import base64
+import mdgps
 
 # Funktion GetTargetFromMail, ruft neuste E-Mail ab, extrahiert Shortlink
 # und bestimmt die Position daraus (via Internet) und gibt Koordinaten
