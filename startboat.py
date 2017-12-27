@@ -5,4 +5,4 @@ import mdmail
 import mdgps
 
 # TEST TEST TEST
-print(GetTargetFromMail())
+print(mdmail.GetTargetFromMail())
