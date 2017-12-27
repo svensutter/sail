@@ -9,6 +9,8 @@ Mail_ImapPort = 993
 Mail_Smtp = "smtp.gmail.com"
 
 import imaplib
+import re
+import base64
 
 # Funktion GetTargetFromMail, ruft neuste E-Mail ab, extrahiert Shortlink
 # und bestimmt die Position daraus (via Internet) und gibt Koordinaten
@@ -26,11 +28,13 @@ def GetTargetFromMail():
   mailid_max = id
   
  mail_content = im.fetch(mailid_max, "(BODY[TEXT])")
+ if re.search(r"base64", mail_content) == "base64": # falls E-Mail base64-codiert ist
+  mail_content = base64.decode(mail_content)
  print(mail_content)
  
- for id in mailids[1][0].split(): # Alle Mails mit den besagten IDs loeschen
-   im.store(id, '+FLAGS', '\\Deleted')
- im.expunge()
+ # for id in mailids[1][0].split(): # Alle Mails mit den besagten IDs loeschen
+ #   im.store(id, '+FLAGS', '\\Deleted')
+ # im.expunge()
 
  im.logout() ### LOGOUT
  
