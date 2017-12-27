@@ -44,8 +44,7 @@ def GetTargetFromMail():
  im.logout() ### LOGOUT
  
  # Was noch fehlt:
- # 1) "none"-Rueckgabe, falls keine neue Mail
- # 2) Link aus mail_content auslesen
- # 3) Linkuebergabe an GetGooglePosition(url), die Positionsdaten ermittelt, mit return
+ # 1) Link aus mail_content auslesen
+ # 2) Linkuebergabe an GetGooglePosition(url), die Positionsdaten ermittelt, mit return
  
 print(GetTargetFromMail()) # test
