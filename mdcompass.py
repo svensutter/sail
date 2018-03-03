@@ -27,6 +27,6 @@ def BoatToNorth():
     
     print(Heading)
    
-while true:
+while True:
     BoatToNorth()
     time.sleep(0.5)
