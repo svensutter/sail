@@ -30,11 +30,11 @@ def dist(a,b):
 
 def get_y_rotation(x,y,z):
     radians = math.atan2(x, dist(y,z))
-    return -math.degrees(radians)
+    return -radians
 
 def get_x_rotation(x,y,z):
     radians = math.atan2(y, dist(x,z))
-    return math.degrees(radians)
+    return radians
 
 
 bus = smbus.SMBus(1) # or bus = smbus.SMBus(1) for Revision 2 boards
@@ -43,7 +43,7 @@ address = 0x68      # This is the address value read via the i2cdetect command
 # Now wake the 6050 up as it starts in sleep mode
 bus.write_byte_data(address, power_mgmt_1, 0)
 
-# Gibt X und Y Neigungswinkel als Listenvariable zurueck
+# Gibt X und Y Neigungswinkel (in radiant) als Listenvariable zurueck
 # X ist Listenelement 0, Y 1
 def GetTilt():
     accel_xout = read_word_2c(0x3b)
