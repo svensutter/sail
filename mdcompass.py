@@ -2,6 +2,7 @@
 
 import mdhmc5883l
 import mdmpu6050
+import math
 
 # Diese Funktion holt die Werte aus dem Kompass- und Neigungssensor und
 # berechnet daraus den Winkel, den das Schiff zu Norden hat (Uhrzeigersinn)
@@ -14,6 +15,14 @@ def BoatToNorth():
     
     # Neigungswinkel einlesen
     tilt = mdmpu6050.GetTilt() # tilt wird zur Listenvariable: 0 = X, 1 = Y
-    print(tilt)
+   
+    # Tilt Compensation der Rohwerte aus dem Kompass
+    xh = x * math.cos(tilt[0]) + z * math.sin(tilt[0])
+    yh = x * math.sin(tilt[1]) * math.sin(tilt[0]) + y * math.cos(tilt[1]) - z * math.sin(tilt[1]) * math.cos(tilt[0])
+    
+    # aus korrigierten Rohwerten Heading berechnen
+    heading = math.atan(yh / xh)
+    
+    print(heading)
     
 BoatToNorth()
