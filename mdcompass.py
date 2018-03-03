@@ -8,9 +8,9 @@ import mdmpu6050
 # Wir erhalten eine Zahl zwischen 0 und 360.
 def BoatToNorth():
     # Read Compass-Accelerometer raw value
-    x = mdhmc588l.read_raw_data(0x03)
-    z = mdhmc588l.read_raw_data(0x05)
-    y = mdhmc588l.read_raw_data(0x07)
+    x = mdhmc5883l.read_raw_data(0x03)
+    z = mdhmc5883l.read_raw_data(0x05)
+    y = mdhmc5883l.read_raw_data(0x07)
     
     # Neigungswinkel einlesen
     tilt = mdmpu6050.GetTilt() # tilt wird zur Listenvariable: 0 = X, 1 = Y
