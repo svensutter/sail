@@ -1,8 +1,9 @@
-#!/usr/bin/python
+# Modul mdmpu6050. Funktionen fuer Hardware-Zugriff auf Neigungssensor.
+# Errechnen von Neigungswinkeln (X und Y).
+# X betrifft Neigung zwischen Bug und Heck, Y Back- und Steuerbord.
 
 import smbus
 import math
-import time
 
 # Power management registers
 power_mgmt_1 = 0x6b
@@ -42,16 +43,9 @@ address = 0x68      # This is the address value read via the i2cdetect command
 # Now wake the 6050 up as it starts in sleep mode
 bus.write_byte_data(address, power_mgmt_1, 0)
 
-while True:
-    time.sleep(0.1)
-    gyro_xout = read_word_2c(0x43)
-    gyro_yout = read_word_2c(0x45)
-    gyro_zout = read_word_2c(0x47)
-
-    print "gyro_xout : ", gyro_xout, " scaled: ", (gyro_xout / 131)
-    print "gyro_yout : ", gyro_yout, " scaled: ", (gyro_yout / 131)
-    print "gyro_zout : ", gyro_zout, " scaled: ", (gyro_zout / 131)
-
+# Gibt X und Y Neigungswinkel als Listenvariable zurueck
+# X ist Listenelement 0, Y 1
+def GetTilt()
     accel_xout = read_word_2c(0x3b)
     accel_yout = read_word_2c(0x3d)
     accel_zout = read_word_2c(0x3f)
@@ -59,12 +53,10 @@ while True:
     accel_xout_scaled = accel_xout / 16384.0
     accel_yout_scaled = accel_yout / 16384.0
     accel_zout_scaled = accel_zout / 16384.0
+    
+    rotation = [0, 0]
 
-    print "accel_xout: ", accel_xout, " scaled: ", accel_xout_scaled
-    print "accel_yout: ", accel_yout, " scaled: ", accel_yout_scaled
-    print "accel_zout: ", accel_zout, " scaled: ", accel_zout_scaled
-
-    print "x rotation: " , get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
-    print "y rotation: " , get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
-
-    time.sleep(0.5)
+    rotation[0] = get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
+    rotation[1] = get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
+    
+    return rotation
