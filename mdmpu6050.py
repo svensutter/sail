@@ -45,7 +45,7 @@ bus.write_byte_data(address, power_mgmt_1, 0)
 
 # Gibt X und Y Neigungswinkel als Listenvariable zurueck
 # X ist Listenelement 0, Y 1
-def GetTilt()
+def GetTilt():
     accel_xout = read_word_2c(0x3b)
     accel_yout = read_word_2c(0x3d)
     accel_zout = read_word_2c(0x3f)
