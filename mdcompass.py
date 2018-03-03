@@ -3,7 +3,6 @@
 import mdhmc5883l
 import mdmpu6050
 import math
-import time # loeschen
 
 # Diese Funktion holt die Werte aus dem Kompass- und Neigungssensor und
 # berechnet daraus den Winkel, den das Schiff zu Norden hat (Uhrzeigersinn)
@@ -31,8 +30,4 @@ def BoatToNorth():
     
     Heading = abs(Heading) # um Fehlerquellen zu vermeiden, da bei Tests -0.0 ausgegeben wurde
     
-    print(Heading)
-   
-while True:
-    BoatToNorth()
-    time.sleep(0.5)
+    return Heading
