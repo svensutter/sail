@@ -25,6 +25,10 @@ def BoatToNorth():
     HeadingRad = math.atan(yh / xh)
     Heading = math.degrees(HeadingRad)
     
+    # da die Werte von -180 bis 180 gehen, Aenderung auf 0 bis 360 Grad
+    if Heading < 0:
+        Heading = Heading + 360
+    
     print(Heading)
    
 while True:
