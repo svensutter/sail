@@ -29,6 +29,8 @@ def BoatToNorth():
     if Heading < 0:
         Heading = Heading + 360
     
+    Heading = math.abs(Heading) # um Fehlerquellen zu vermeiden, da bei Tests -0.0 ausgegeben wurde
+    
     print(Heading)
    
 while True:
