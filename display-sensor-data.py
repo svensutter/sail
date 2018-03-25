@@ -3,7 +3,9 @@
 
 import time
 import mdcompass
+import mdmpu6050
 
 while True:
-  print(mdcompass.BoatToNorth())
+  print("Winkel:",mdcompass.BoatToNorth())
+  print("Neigung:",mdmpu6050.GetTilt())
   time.sleep(1)
