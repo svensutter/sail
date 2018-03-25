@@ -4,6 +4,6 @@
 import time
 import mdcompass
 
-while true:
+while True:
   print(mdcompass.BoatToNorth())
   time.sleep(1)
