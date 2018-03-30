@@ -3,6 +3,7 @@
 import math
 import urllib.request
 import re
+import gpsd
 
 
 # Funktion GetGooglePosition. Ausgehend von URL, die in Mail steckt, wenn man eine
@@ -54,3 +55,19 @@ def TargetAngleToNorth(Boat_Latitude, Boat_Longitude, Target_Latitude, Target_Lo
         Angle = 360 - Angle
 
     return(Angle)
+
+
+# Funktion GetGPSPosition() gibt Listenvariable mit 0(Longitude) und 1(Latitude)
+# im Dezimalformat zurueck. Wenn kein Fix moeglich, dann False als Return
+# Zusaetzlich wird bei Listenelement 2 die Geschwindigkeit zurueckgegeben
+def GetGPSPosition():
+    gpsd.connect() # verbindet zu lokalem GPSD-Dienst (muss installiert und konfiguriert sein)
+    gpsdata = gpsd.get_current()
+    current_position = [0,0,0]
+    if gpsdata.mode >= 2: # nur bei diesem und hoeherem Modus ist der Fix da
+        current_position[0] = gpsdata.lon
+        current_position[1] = gpsdata.lat
+        current_position[2] = gpsdata.hspeed
+        return current_position
+    else:
+        return False
