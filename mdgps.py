@@ -57,7 +57,7 @@ def TargetAngleToNorth(Boat_Latitude, Boat_Longitude, Target_Latitude, Target_Lo
     return(Angle)
 
 
-# Funktion GetGPSPosition() gibt Listenvariable mit 0(Longitude) und 1(Latitude)
+# Funktion GetGPSPosition() gibt Listenvariable mit 0(Latitude) und 1(Longitude)
 # im Dezimalformat zurueck. Wenn kein Fix moeglich, dann False als Return
 # Zusaetzlich wird bei Listenelement 2 die Geschwindigkeit zurueckgegeben
 def GetGPSPosition():
@@ -65,8 +65,8 @@ def GetGPSPosition():
     gpsdata = gpsd.get_current()
     current_position = [0,0,0]
     if gpsdata.mode >= 2: # nur bei diesem und hoeherem Modus ist der Fix da
-        current_position[0] = gpsdata.lon
-        current_position[1] = gpsdata.lat
+        current_position[0] = gpsdata.lat
+        current_position[1] = gpsdata.lon
         current_position[2] = gpsdata.hspeed
         return current_position
     else:
