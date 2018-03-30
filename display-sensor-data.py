@@ -4,8 +4,12 @@
 import time
 import mdcompass
 import mdmpu6050
+import mdgps
+import os
 
 while True:
+  os.system('clear')
   print("Winkel:",mdcompass.BoatToNorth())
   print("Neigung:",mdmpu6050.GetTilt())
+  print("Position und Speed:",mdgps.GetGPSPosition())
   time.sleep(1)
