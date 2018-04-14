@@ -4,6 +4,7 @@
 import time
 import mdcompass
 import mdmpu6050
+import mdwind
 import mdgps
 import os
 
@@ -12,5 +13,5 @@ while True:
   print("Winkel:",mdcompass.BoatToNorth())
   print("Neigung:",mdmpu6050.GetTilt())
   print("Position und Speed:",mdgps.GetGPSPosition())
-  print("Windrichtung:")
+  print("Windrichtung:",mdwind.GetApparentWind())
   time.sleep(1)
