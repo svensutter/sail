@@ -35,6 +35,6 @@ def GetApparentWind():
   GemessenerWinkel = 360
  else:
   Rohwert_bereinigt = Winkelaufnehmer_Wert - 0.1 # somit Werte von 0-0.8, damit Dreisatz:
-  Winkel = (360 / 0.8) * Rohwert_bereinigt
+  GemessenerWinkel = (360 / 0.8) * Rohwert_bereinigt
  
- return Winkel
+ return GemessenerWinkel
