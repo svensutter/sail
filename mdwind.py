@@ -24,5 +24,6 @@ def RealWindAngle(ApparentWind, BoatSpeed, ApparentAngle):
 # Mit dieser Funktion wird die gemessene Windrichtung ausgegeben, zwischen 0 und 360 Grad. 0 ist, wenn
 # der Wind direkt von vorne kommt (relativ zum Boot) und dann geht es im Uhrzeigersinn herum.
 def GetApparentWind():
- WertWinkelaufnehmer = gpiozero.MCP3008(channel = 0) # Objekt mit Wert aus AD-Wandler Kanal 0
- return WertWinkelaufnehmer # test
+ Winkelaufnehmer_Objekt = gpiozero.MCP3008(channel = 0) # Objekt mit Wert aus AD-Wandler Kanal 0
+ Winkelaufnehmer_Wert = Winkelaufnehmer_Objekt.value
+ return Winkelaufnehmer_Wert # test
