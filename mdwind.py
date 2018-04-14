@@ -1,6 +1,7 @@
 # Dieses Modul beinhaltet alle Funktionen zur Windanalyse. Dazu gehört die Bestimmung der subjektiven Windrichtung,
 # wie auch die Verbindung zur Hardware.
 import math
+import gpiozero
 
 
 # Mit dieser Funktion kann die tatsaechliche Windrichtung (unabhaengig von Fahrtwind) berechnet werden.
@@ -18,3 +19,10 @@ def RealWindAngle(ApparentWind, BoatSpeed, ApparentAngle):
   result = result + 360
  
  return result  
+
+
+# Mit dieser Funktion wird die gemessene Windrichtung ausgegeben, zwischen 0 und 360 Grad. 0 ist, wenn
+# der Wind direkt von vorne kommt (relativ zum Boot) und dann geht es im Uhrzeigersinn herum.
+def GetApparentWind():
+ WertWinkelaufnehmer = gpiozero.MCP3008(channel = 0) # Objekt mit Wert aus AD-Wandler Kanal 0
+ return WertWinkelaufnehmer # test
