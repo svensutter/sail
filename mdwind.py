@@ -26,4 +26,15 @@ def RealWindAngle(ApparentWind, BoatSpeed, ApparentAngle):
 def GetApparentWind():
  Winkelaufnehmer_Objekt = gpiozero.MCP3008(channel = 0) # Objekt mit Wert aus AD-Wandler Kanal 0
  Winkelaufnehmer_Wert = Winkelaufnehmer_Objekt.value
- return Winkelaufnehmer_Wert # test
+ 
+ # Der Winkelaufnehmer (Contelec) gibt Werte von 10-90 Prozent der Referenzspannung an, und das
+ # sehr praezise. Deshalb alles unter- und oberhalb auf 0 resp. 360 Grad.
+ if Winkelaufnehmer_Wert <= 0.1:
+  GemessenerWinkel = 0
+ elif Winkelaufnehmer_Wert >= 0.9:
+  GemessenerWinkel = 360
+ else:
+  Rohwert_bereinigt = Winkelaufnehmer_Wert - 0.1 # somit Werte von 0-0.8, damit Dreisatz:
+  Winkel = (360 / 0.8) * Rohwert_bereinigt
+ 
+ return Winkel
