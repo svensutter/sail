@@ -3,6 +3,9 @@
 
 import mdmail
 import mdgps
+import mdrouting
+
+mdrouting.InitializeLakemaps() # Alle Seekarten werden in Instanzen ueberfuehrt
 
 # TEST TEST TEST
 target = mdmail.GetTargetFromMail()
