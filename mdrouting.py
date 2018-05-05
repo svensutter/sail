@@ -148,7 +148,6 @@ def InitializeLakemaps():
 
 
 
-
 # TEST TEST TEST kann spaeter geloescht werden
 InitializeLakemaps() # test
 print(opfikersee)
@@ -158,5 +157,4 @@ print(opfikersee.excludes)
 print(opfikersee.exclude_names)
 print(opfikersee.buoys)
 print(opfikersee.buoy_names)
-
 
