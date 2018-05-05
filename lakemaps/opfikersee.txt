@@ -11,7 +11,7 @@ Navigable:
 47.421102, 8.564126
 47.421079, 8.564065
 Exclude:
-none
+None
 Buoy South:
 47.420277, 8.563487
 Buoy North:
