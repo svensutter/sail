@@ -4,8 +4,6 @@
 import os
 import re
 
-lakemaps = [""] # Liste mit allen Instanzen von lakemaps
-
 # Klasse lakemap wird bei der Initialisierung der Seekarten genutzt. Das heisst, dass
 # beim Starten des Hauptskriptes (startboat.py) eine Funktion aufgerufen wird, die alle
 # Seekarten einliest und fuer jeden See ein Objekt erstellt anhand dieser Klasse.
@@ -29,6 +27,7 @@ class lakemap:
 # Diese Funktion liest alle Textfiles in /lakemaps aus und eroeffnet fuer jeden See eine Instanz
 # von der Klasse lakemap. Dort werden alle Punkte und Bezeichnungen abgelegt. Funktionen und so
 # weiter arbeiten dann nur noch mit den Instanzen und nicht mit den Textfiles.
+# Return-Wert: Liste mit erstellten Instanzen.
 # Diese Funktion wird einmalig bei Skriptstart (startboat.py) ausgefuert.
 def InitializeLakemaps():
 
@@ -38,6 +37,7 @@ def InitializeLakemaps():
 
     # Aus jeder Datei wird nun eine Instanz von lakemap erstellt
     x = 0 # einfacher Zaehler
+    lakemaps = [""] # init
     for i in filenames:
         lake_name = re.sub("\.txt", '', i)
 
@@ -144,12 +144,13 @@ def InitializeLakemaps():
 
         x += 1
 
+    return lakemaps
+
 
 
 
 # TEST TEST TEST kann spaeter geloescht werden
 InitializeLakemaps() # test
-print(lakemaps)
 print(opfikersee)
 print(opfikersee.lake_name)
 print(opfikersee.navigable)

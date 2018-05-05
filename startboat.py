@@ -5,7 +5,13 @@ import mdmail
 import mdgps
 import mdrouting
 
-mdrouting.InitializeLakemaps() # Alle Seekarten werden in Instanzen ueberfuehrt
+# Alle Seekarten werden in Instanzen ueberfuehrt
+# Die Variable lake_instanzen enthaelt eine Liste aller Instanzen
+# die erstellt wurden. Fuer jeden See eine.
+# lake_instances = [""] # init
+lake_instances = mdrouting.InitializeLakemaps()
+print(lake_instances)
+
 
 # TEST TEST TEST
 target = mdmail.GetTargetFromMail()
