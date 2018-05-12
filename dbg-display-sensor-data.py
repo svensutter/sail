@@ -10,7 +10,7 @@ import os
 
 while True:
   os.system('clear')
-  print("Winkel:",mdcompass.BoatToNorth())
+  print("Neigungskorrigierter Winkel:",mdcompass.BoatToNorth())
   print("Neigung:",mdmpu6050.GetTilt())
   print("Position und Speed:",mdgps.GetGPSPosition())
   print("Windrichtung:",mdwind.GetApparentWind())
