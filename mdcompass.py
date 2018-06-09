@@ -32,7 +32,6 @@ def BoatToNorth():
     yh = x * math.sin(-tilt[1]) * math.sin(tilt[0]) + y * math.cos(-tilt[1]) - z * math.sin(-tilt[1]) * math.cos(tilt[0])
     
     # aus korrigierten Rohwerten Heading berechnen
-    # HeadingRad = math.atan(yh / xh)
     HeadingRad = math.atan2(yh, xh)
     if HeadingRad < 0:
         HeadingRad += 2 * math.pi
@@ -40,17 +39,5 @@ def BoatToNorth():
         HeadingRad -= 2 * math.pi
 
     Heading = math.degrees(HeadingRad)
-
-
-    HeadingRad1 = math.atan2(y, x)
-    if HeadingRad1 < 0:
-        HeadingRad1 += 2 * math.pi
-    if HeadingRad1 > (2 * math.pi):
-        HeadingRad1 -= 2 * math.pi
-
-    Heading1 = math.degrees(HeadingRad1)
-    print(Heading1)
-
-
     
     return Heading
