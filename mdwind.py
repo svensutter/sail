@@ -18,7 +18,7 @@ def RealWindAngle(ApparentWind, BoatSpeed, ApparentAngle):
  if result < 0:
   result = result + 360
  
- return result  
+ return result
 
 
 # Mit dieser Funktion wird die gemessene Windrichtung ausgegeben, zwischen 0 und 360 Grad. 0 ist, wenn
