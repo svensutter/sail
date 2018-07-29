@@ -4,6 +4,8 @@
 import gpiozero
 import time # loeschen
 
+# Funktion GetDistance() ruft IR-Sensor-Wert aus AD-Wandler ab und uebersetzt diesen
+# in ein handliches Format (0-100). Je hoeher der Wert, desto naeher sind Objekte.
 def GetDistance():
  IR_Sensor_Objekt = gpiozero.MCP3008(channel = 1) # Objekt mit Wert aus AD-Wandler Kanal 1
  IR_Sensor_Wert = IR_Sensor_Objekt.value
