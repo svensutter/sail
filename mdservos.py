@@ -56,9 +56,3 @@ def SegelWinkel(Winkel):
     SegelServo.ChangeDutyCycle(Pulsweite)
 
     return True
-
-
-# test test, noch lassen fuer Christine
-while True:
-    InputWinkel = float(input("Winkel des Hauptsegels:"))
-    SegelWinkel(InputWinkel)
