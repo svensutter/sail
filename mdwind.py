@@ -27,14 +27,14 @@ def GetApparentWind():
  Winkelaufnehmer_Objekt = gpiozero.MCP3008(channel = 0) # Objekt mit Wert aus AD-Wandler Kanal 0
  Winkelaufnehmer_Wert = Winkelaufnehmer_Objekt.value
  
- # Der Winkelaufnehmer (Contelec) gibt Werte von 10-90 Prozent der Referenzspannung an, und das
+ # Der Winkelaufnehmer (Contelec) gibt Werte von 5-95 Prozent der Referenzspannung an, und das
  # sehr praezise. Deshalb alles unter- und oberhalb auf 0 resp. 360 Grad.
- if Winkelaufnehmer_Wert <= 0.1:
+ if Winkelaufnehmer_Wert <= 0.05:
   GemessenerWinkel = 0
- elif Winkelaufnehmer_Wert >= 0.9:
+ elif Winkelaufnehmer_Wert >= 0.95:
   GemessenerWinkel = 360
  else:
-  Rohwert_bereinigt = Winkelaufnehmer_Wert - 0.1 # somit Werte von 0-0.8, damit Dreisatz:
-  GemessenerWinkel = (360 / 0.8) * Rohwert_bereinigt
+  Rohwert_bereinigt = Winkelaufnehmer_Wert - 0.05 # somit Werte von 0-0.9, damit Dreisatz:
+  GemessenerWinkel = (360 / 0.9) * Rohwert_bereinigt
  
  return GemessenerWinkel
