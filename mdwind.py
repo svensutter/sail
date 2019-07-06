@@ -1,3 +1,6 @@
+# CONFIG Offset-Bootausrichtung
+offsetwind_bootausrichtung = -133 # muss noch eruiert werden! (Werte im Bereich +- 180)
+
 # Dieses Modul beinhaltet alle Funktionen zur Windanalyse. Dazu gehört die Bestimmung der subjektiven Windrichtung,
 # wie auch die Verbindung zur Hardware.
 import math
@@ -21,7 +24,7 @@ def RealWindAngle(ApparentWind, BoatSpeed, ApparentAngle):
  return result
 
 
-# Mit dieser Funktion wird die gemessene Windrichtung ausgegeben, zwischen 0 und 360 Grad. 0 ist, wenn
+# Mit dieser Funktion wird die gemessene Windrichtung ausgegeben, zwischen 0 und 359.999 Grad. 0 ist, wenn
 # der Wind direkt von vorne kommt (relativ zum Boot) und dann geht es im Uhrzeigersinn herum.
 def GetApparentWind():
  Winkelaufnehmer_Objekt = gpiozero.MCP3008(channel = 0) # Objekt mit Wert aus AD-Wandler Kanal 0
@@ -36,5 +39,15 @@ def GetApparentWind():
  else:
   Rohwert_bereinigt = Winkelaufnehmer_Wert - 0.05 # somit Werte von 0-0.9, damit Dreisatz:
   GemessenerWinkel = (360 / 0.9) * Rohwert_bereinigt
+
+ GemessenerWinkel += offsetwind_bootausrichtung
+ if GemessenerWinkel > 360:
+  GemessenerWinkel -= 360
+ elif GemessenerWinkel < 0:
+  GemessenerWinkel += 360
+
+ # Damit die Werte eindeutig sind, wird 360 auf 0 gesetzt.
+ if GemessenerWinkel == 360:
+  GemessenerWinkel = 0
  
  return GemessenerWinkel

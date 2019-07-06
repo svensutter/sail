@@ -14,6 +14,6 @@ while True:
   print("Neigungskorrigierter Winkel:",mdcompass.BoatToNorth())
   print("Neigung:",mdmpu6050.GetTilt())
   print("Position und Speed:",mdgps.GetGPSPosition())
-  print("Windrichtung:",mdwind.GetApparentWind())
+  print("Windrichtung (Rohwert ohne Kompass):",mdwind.GetApparentWind())
   print("Distanz vor Schiff:",mdirsensor.GetDistance())
   time.sleep(1)
