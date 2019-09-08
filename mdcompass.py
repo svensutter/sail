@@ -1,12 +1,7 @@
 # Modul enthält alles rund um Kompassfunktionen
 
-# CONFIG (manuell uebertragen aus ausgefuetrtem Script calibrate-compass.py)
-x_offset = 4.0
-y_offset = -79.0
-z_offset = 60
-
 # CONFIG Offset-Bootausrichtung
-offsetcomp_bootausrichtung = -30 # muss noch eruiert werden!
+offsetcomp_bootausrichtung = 0 # passte schon von Haus aus...
 
 # IMPORT
 import mdhmc5883l
@@ -23,9 +18,9 @@ def BoatToNorth():
     y_raw = mdhmc5883l.read_raw_data(0x07)
 
     # Skalieren
-    x = x_raw - x_offset
-    z = z_raw - z_offset
-    y = y_raw - y_offset
+    x = x_raw
+    z = z_raw
+    y = y_raw
     
     # Neigungswinkel einlesen
     tilt = mdmpu6050.GetTilt() # tilt wird zur Listenvariable: 0 = X, 1 = Y
